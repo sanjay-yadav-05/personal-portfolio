@@ -353,7 +353,7 @@ article {
 }
 
 article .icon {
-  cursor: default;
+  cursor: pointer;
 }
 
 /* PROJECTS SECTION */
