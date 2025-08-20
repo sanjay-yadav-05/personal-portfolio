@@ -285,7 +285,11 @@ section {
 }
 
 .about-pic {
+  /* width: 500px; */
+  /* height: 600px; */
   border-radius: 2rem;
+  /* justify-content: center;
+  align-items: center; */
 }
 
 .arrow {
@@ -302,6 +306,7 @@ section {
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
   text-align: center;
+  
 }
 
 .section-container {
@@ -331,6 +336,7 @@ section {
 }
 
 .experience-details-container {
+  margin-top: 4.5rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -348,7 +354,7 @@ section {
 article {
   display: flex;
   width: 10.5rem;
-  justify-content: space-around;
+  justify-content:flex-start;
   gap: 0.5rem;
 }
 
@@ -371,6 +377,7 @@ article .icon {
   border-radius: 2rem;
   width: 90%;
   height: 90%;
+  object-fit: cover;
 }
 
 .project-title {
@@ -394,8 +401,9 @@ article .icon {
 
 .contact-info-upper-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   border-radius: 2rem;
+  gap: 0.5rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
   background: (250, 250, 250);
@@ -433,3 +441,291 @@ footer {
 footer p {
   text-align: center;
 }
+
+/* ========== PROJECTS SLIDER (ADDED) ========== */
+
+:root {
+  --slider-card-width: clamp(260px, 28vw, 340px);
+  --slider-gap: 1.5rem;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 4.5rem auto 0 auto;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  align-items: stretch;
+  gap: var(--slider-gap);
+  will-change: transform;
+  transform: translateX(0); /* JS updates this */
+  transition: none;         /* JS enables temporarily on arrow clicks */
+}
+
+.slider-track .details-container {
+  flex: 0 0 var(--slider-card-width); /* fixed card width inside slider */
+}
+
+/* Pause cursor hint */
+.slider-container:hover {
+  cursor: grab;
+}
+
+/* Slider buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  z-index: 5;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+  line-height: 1;
+}
+
+.slider-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.slider-btn.left { left: 10px; }
+.slider-btn.right { right: 10px; }
+
+
+
+#changing-role {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  min-height: 2.5rem;   /* fixes the shifting issue */
+  display: inline-block;
+  border-right: 2px solid black; /* typing cursor */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+
+/* Make slider section breathe on small screens */
+@media (max-width: 900px) {
+  section {
+    margin: 0 2rem;
+  }
+  .about-containers{
+    flex-direction: column;
+  }
+  #about-me-pic{
+    display: none;
+  }
+  .about-details-container{
+    margin-top: .5rem;
+  }
+
+
+/* Collapsible for mobile only */
+.details-container.collapsible .article-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+  
+}
+
+.details-container.active .article-container {
+  max-height: 600px; /* adjust this value if your content is taller */
+  opacity: 1;
+}
+
+.exp-arrow {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.exp-arrow::after {
+  content: "▼";
+  position: absolute;
+  right: .5rem;
+  font-size: 1.2rem;
+  color: black; /* arrow color */
+  transition: transform 0.5s ease;
+}
+
+.details-container.active .experience-sub-title::after {
+  transform: rotate(180deg);
+}
+
+}
+
+
+/* Hamburger icon default */
+.hamburger-icon {
+  width: 30px;
+  height: 22px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-icon span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: black;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+}
+
+/* Animation: turn into X */
+.hamburger-icon.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
+}
+
+.hamburger-icon.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.hamburger-icon.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
+}
+
+/* Menu links hidden by default */
+.menu-links {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+/* Show menu when open */
+.menu-links.open {
+  display: flex;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ==== NEW PROFESSIONAL CARD STYLE ==== */
+
+.details-container.professional {
+  background: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left; /* override center for cleaner alignment */
+}
+
+.details-container.professional:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.details-container.professional h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.details-container.professional ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.details-container.professional ul li {
+  margin: 0.6rem 0;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #555;
+}
+
+.details-container.professional ul li strong {
+  color: #222;
+}
+
+.details-container.professional .date {
+  display: block;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.details-container.professional .icon {
+  width: 40px;
+  margin-bottom: 1rem;
+}
+
+
+/* ==== EXPERIENCE / ACHIEVEMENT ITEM STYLE ==== */
+
+.details-container.professional ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.details-container.professional ul li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 18px rgba(0,0,0,0.1);
+}
+
+.details-container.professional .left {
+  max-width: 80%;
+}
+
+.details-container.professional .problem {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.4rem;
+}
+
+.details-container.professional .club {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.details-container.professional .date {
+  font-size: 0.9rem;
+  color: #888;
+  white-space: nowrap; /* prevents breaking */
+}
+
+
+.shadow{
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+
+}
+
