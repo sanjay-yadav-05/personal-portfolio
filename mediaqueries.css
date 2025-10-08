@@ -101,3 +101,26 @@
     text-align: justify;
   }
 }
+
+
+
+/* ✅ Media query for smaller screens */
+@media (max-width: 768px) {
+  .experience-item {
+    flex-direction: column; /* Stack vertically on smaller screens */
+    align-items: flex-start; /* Align text to left */
+  }
+
+  .meta {
+    text-align: left;
+    width: 100%;
+  }
+
+  .role, .club, .date {
+    font-size: 14px; /* Slightly smaller text for better fit */
+  }
+
+  ul {
+    gap: 8px; /* Reduce spacing between list items */
+  }
+}
