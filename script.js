@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const roles = ["Software Developer", "Web Developer", "Full Stack Engineer", "AI Enthusiast"];
+const roles = ["Software Engineer", "Web Developer", "Full Stack Engineer", "AI Enthusiast"];
 let roleIndex = 0;
 let charIndex = 0;
 let deleting = false;

@@ -729,3 +729,14 @@ footer p {
 
 }
 
+#about .intro-text {
+  font-size: 1rem; /* matches your existing text scale */
+  line-height: 1.6;
+  color: rgb(85, 85, 85); /* same as your global <p> */
+  text-align: justify;
+}
+
+/* Name highlight consistent with your theme */
+#about .intro-name {
+  font-weight: 600;
+}

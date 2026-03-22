@@ -124,3 +124,33 @@
     gap: 8px; /* Reduce spacing between list items */
   }
 }
+
+@media (max-width: 480px) {
+  .intro-text {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .intro-wrapper {
+    margin: 30px auto;
+    padding: 0 6px;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Stack items vertically */
+  #about .about-details-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Move text to top */
+  #about .text-container {
+    order: -1; /* 🔥 this brings it to top */
+  }
+
+  /* Optional spacing fix */
+  #about .text-container {
+    margin-bottom: 1rem;
+  }
+}
